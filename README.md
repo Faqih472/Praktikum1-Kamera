@@ -1,16 +1,35 @@
-# kamera_mantap
+📸 Kamera Mantap
+Aplikasi Flutter sederhana yang menggunakan kamera untuk mengambil gambar dan menampilkannya. Proyek ini mendukung Android, iOS, dan Web.
 
-A new Flutter project.
 
-## Getting Started
+ss:
+![Screenshot (4)](https://github.com/user-attachments/assets/5f6669cf-151e-4d14-a0ed-76acdd4e7c37)
+![Screenshot (3)](https://github.com/user-attachments/assets/f79764b3-0931-4e7c-9852-8edbf93e48ad)
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+✨ Fitur Utama
+✅ Mengakses kamera perangkat untuk mengambil gambar
+✅ Menampilkan hasil gambar setelah diambil
+✅ Mendukung Android, iOS, dan Web
+✅ Menampilkan loading saat kamera belum siap
+✅ Error handling jika kamera gagal diinisialisasi
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+📜 Penjelasan File & Kode
+1. main.dart (Entry Point)
+2.  takepicture_screen.dart (Mengambil Gambar)
+3. displaypicture_screen.dart (Menampilkan Gambar)
+4. dependencies:
+  flutter:
+    sdk: flutter
+  camera: ^0.11.1
+  path_provider: ^2.1.5
+  path: ^1.9.0
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+🎯 Fitur yang Bisa Ditambahkan
+✅ Simpan gambar ke galeri menggunakan gallery_saver
+✅ Share gambar langsung ke media sosial
+✅ Mode kamera depan & belakang
+
+👨‍💻 Kontributor
+[Faqih472] – Flutter Developer Di masa yang akan datang 
