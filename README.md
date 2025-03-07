@@ -13,6 +13,9 @@ ss:
 ✅ Mendukung Android, iOS, dan Web
 ✅ Menampilkan loading saat kamera belum siap
 ✅ Error handling jika kamera gagal diinisialisasi
+✅ Simpan gambar ke galeri menggunakan gallery_saver
+✅ Share gambar langsung ke media sosial menggunakan share_plus
+✅ Mode kamera depan & belakang
 
 📜 Penjelasan File & Kode
 1. main.dart (Entry Point)
@@ -25,11 +28,13 @@ ss:
   path_provider: ^2.1.5
   path: ^1.9.0
 
+🎯 Fitur yang Bisa Ditambahkan Berikutnya
+☑️ Rekam video dengan kamera
+☑️ Filter foto sebelum menyimpan
+☑️ UI lebih interaktif dengan animasi
 
-🎯 Fitur yang Bisa Ditambahkan
-✅ Simpan gambar ke galeri menggunakan gallery_saver
-✅ Share gambar langsung ke media sosial
-✅ Mode kamera depan & belakang
+
+
 
 👨‍💻 Kontributor
 [Faqih472] – Flutter Developer Di masa yang akan datang 
