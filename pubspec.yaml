@@ -12,11 +12,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  camera: ^0.10.0
 
-  cupertino_icons: ^1.0.8  # Ikon untuk iOS
-  camera: ^0.11.1          # Plugin kamera
-  path_provider: ^2.1.5    # Mengelola path file di perangkat
-  path: ^1.9.0             # Manipulasi path
+
+
+
+
+
 
 dev_dependencies:
   flutter_test:

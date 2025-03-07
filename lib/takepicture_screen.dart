@@ -14,12 +14,19 @@ class TakePictureScreen extends StatefulWidget {
 class TakePictureScreenState extends State<TakePictureScreen> {
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
+  late CameraDescription _currentCamera;
 
   @override
   void initState() {
     super.initState();
+    _currentCamera = widget.camera;
+    _initializeCamera(_currentCamera);
+  }
+
+  // Fungsi untuk menginisialisasi ulang kamera
+  void _initializeCamera(CameraDescription camera) {
     _controller = CameraController(
-      widget.camera,
+      camera,
       ResolutionPreset.medium,
     );
     _initializeControllerFuture = _controller.initialize();
@@ -31,10 +38,24 @@ class TakePictureScreenState extends State<TakePictureScreen> {
     super.dispose();
   }
 
+  // Fungsi untuk beralih kamera
+  void _toggleCamera(List<CameraDescription> cameras) {
+    setState(() {
+      _currentCamera = _currentCamera.lensDirection == CameraLensDirection.front
+          ? cameras.firstWhere((camera) => camera.lensDirection == CameraLensDirection.back)
+          : cameras.firstWhere((camera) => camera.lensDirection == CameraLensDirection.front);
+
+      // Menginisialisasi ulang controller kamera
+      _initializeCamera(_currentCamera);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Take a picture')),
+      appBar: AppBar(
+        title: const Text('Take a picture'),
+      ),
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
         builder: (context, snapshot) {
@@ -45,23 +66,49 @@ class TakePictureScreenState extends State<TakePictureScreen> {
           }
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          try {
-            await _initializeControllerFuture;
-            final image = await _controller.takePicture();
-            await Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => DisplayPictureScreen(imageFile: image), // ✅ Fix untuk Web & Android/iOS
-              ),
-            );
-
-          } catch (e) {
-            print(e);
-          }
-        },
-        child: const Icon(Icons.camera_alt),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 20.0), // Jarak dari bawah
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center, // Menjaga tombol di tengah
+          children: [
+            // Tombol untuk beralih kamera
+            FloatingActionButton(
+              onPressed: () async {
+                try {
+                  final cameras = await availableCameras();
+                  _toggleCamera(cameras);
+                } catch (e) {
+                  print('Error getting cameras: $e');
+                }
+              },
+              child: const Icon(Icons.switch_camera),
+            ),
+            const SizedBox(width: 20), // Jarak antar tombol
+            // Tombol untuk mengambil gambar
+            FloatingActionButton(
+              onPressed: () async {
+                try {
+                  await _initializeControllerFuture;
+                  final image = await _controller.takePicture();
+                  await Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => DisplayPictureScreen(imageFile: image),
+                    ),
+                  );
+                } catch (e) {
+                  print(e);
+                }
+              },
+              child: const Icon(Icons.camera_alt),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
+
+
+
+
+//takepicture_screen.dart

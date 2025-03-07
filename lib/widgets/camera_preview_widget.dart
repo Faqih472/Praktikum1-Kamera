@@ -14,3 +14,5 @@ class CameraPreviewWidget extends StatelessWidget {
     return CameraPreview(controller);
   }
 }
+
+//camera_preview_widgets.dart

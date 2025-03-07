@@ -30,3 +30,6 @@ class DisplayPictureScreen extends StatelessWidget {
     );
   }
 }
+
+
+//displaypicture_screen.dart
