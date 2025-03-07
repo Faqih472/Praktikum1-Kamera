@@ -8,14 +8,14 @@ ss:
 
 
 ✨ Fitur Utama
-1.✅ Mengakses kamera perangkat untuk mengambil gambar
-2.✅ Menampilkan hasil gambar setelah diambil
-3.✅ Mendukung Android, iOS, dan Web
-4.✅ Menampilkan loading saat kamera belum siap
-5.✅ Error handling jika kamera gagal diinisialisasi
-6.✅ Menyimpan gambar ke galeri menggunakan gallery_saver
-7.✅ Berbagi gambar langsung ke media sosial menggunakan share_plus
-8.✅ Mode kamera depan & belakang
+1.  ✅ Mengakses kamera perangkat untuk mengambil gambar
+2.  ✅ Menampilkan hasil gambar setelah diambil
+3.  ✅ Mendukung Android, iOS, dan Web
+4.  ✅ Menampilkan loading saat kamera belum siap
+5.  ✅ Error handling jika kamera gagal diinisialisasi
+6.  ✅ Menyimpan gambar ke galeri menggunakan gallery_saver
+7.  ✅ Berbagi gambar langsung ke media sosial menggunakan share_plus
+8.  ✅ Mode kamera depan & belakang
 
 
 📜 Penjelasan File & Kode
