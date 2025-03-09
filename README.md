@@ -1,4 +1,4 @@
-📸 Kamera Mantap
+📸 Kamera Mantap v2 (Update Fitur filter carousel)
 Aplikasi Flutter sederhana yang menggunakan kamera untuk mengambil gambar dan menampilkannya. Proyek ini mendukung Android, iOS, dan Web.
 
 
@@ -17,7 +17,8 @@ ss:
 5.  ✅ Error handling jika kamera gagal diinisialisasi
 6.  ✅ Menyimpan gambar ke galeri menggunakan gallery_saver
 7.  ✅ Berbagi gambar langsung ke media sosial menggunakan share_plus
-8.  ✅ Mode kamera depan & belakang
+8.  ✅ Filter foto sebelum menyimpan
+9.  ✅ Mode kamera depan & belakang
 
 
 📜 Penjelasan File & Kode
@@ -33,7 +34,6 @@ ss:
 
 🎯 Fitur yang Bisa Ditambahkan Berikutnya
 ☑️ Rekam video dengan kamera
-☑️ Filter foto sebelum menyimpan
 ☑️ UI lebih interaktif dengan animasi
 
 
