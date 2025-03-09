@@ -1,4 +1,5 @@
-📸 Kamera Mantap v2 (Update Fitur filter carousel)
+📸 Kamera (Update dengan Fitur filter carousel)
+
 Aplikasi Flutter sederhana yang menggunakan kamera untuk mengambil gambar dan menampilkannya. Proyek ini mendukung Android, iOS, dan Web.
 
 
