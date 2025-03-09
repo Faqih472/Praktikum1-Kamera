@@ -1,0 +1,14 @@
+kamera_mantap/
+│── lib/
+│   │── widgets/
+│   │   │── camera_preview_widget.dart    # Widget khusus untuk preview kamera
+│   │── main.dart                          # Entry point aplikasi
+│   │── takepicture_screen.dart            # Layar utama untuk mengambil gambar
+│   │── displaypicture_screen.dart         # Layar untuk menampilkan hasil gambar
+│
+│── pubspec.yaml                           # Konfigurasi proyek & dependensi
+│── android/                               # Kode native untuk Android
+│── ios/                                   # Kode native untuk iOS
+│── web/                                   # Kode untuk platform Web
+│── build/                                 # Hasil build aplikasi
+│── test/                                  # Unit test (jika ada)

@@ -1,6 +1,8 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'displaypicture_screen.dart';
+import 'widgets/photo_filter_carousel.dart'; // Import layar filter foto
 
 class TakePictureScreen extends StatefulWidget {
   const TakePictureScreen({super.key, required this.camera});
@@ -54,7 +56,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Take a picture'),
+        title: const Text('Take a Picture'),
       ),
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
@@ -67,9 +69,9 @@ class TakePictureScreenState extends State<TakePictureScreen> {
         },
       ),
       floatingActionButton: Padding(
-        padding: const EdgeInsets.only(bottom: 20.0), // Jarak dari bawah
+        padding: const EdgeInsets.only(bottom: 20.0),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center, // Menjaga tombol di tengah
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // Tombol untuk beralih kamera
             FloatingActionButton(
@@ -90,9 +92,11 @@ class TakePictureScreenState extends State<TakePictureScreen> {
                 try {
                   await _initializeControllerFuture;
                   final image = await _controller.takePicture();
+
+                  // Setelah mengambil gambar, masuk ke layar filter
                   await Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => DisplayPictureScreen(imageFile: image),
+                      builder: (context) => PhotoFilterCarousel(imageFile: File(image.path)),
                     ),
                   );
                 } catch (e) {
@@ -107,8 +111,3 @@ class TakePictureScreenState extends State<TakePictureScreen> {
     );
   }
 }
-
-
-
-
-//takepicture_screen.dart
