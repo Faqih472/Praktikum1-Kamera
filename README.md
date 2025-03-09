@@ -3,7 +3,7 @@ Aplikasi Flutter sederhana yang menggunakan kamera untuk mengambil gambar dan me
 
 
 ss:
-![WhatsApp Image 2025-03-09 at 10 30 12](https://github.com/user-attachments/assets/83ff7d45-8880-4882-b6a8-94cdac232b90)
+![WhatsApp Image 2025-03-09 at 10 30 11](https://github.com/user-attachments/assets/451c81ec-c8ed-4587-90a8-0a74f8151c1a)
 
 ![WhatsApp Image 2025-03-09 at 10 33 28](https://github.com/user-attachments/assets/cc6a78ac-4c41-4a6e-b1da-a65cac3d9167)
 
