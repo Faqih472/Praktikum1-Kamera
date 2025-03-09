@@ -16,10 +16,9 @@ ss:
 3.  ✅ Mendukung Android, iOS, dan Web
 4.  ✅ Menampilkan loading saat kamera belum siap
 5.  ✅ Error handling jika kamera gagal diinisialisasi
-6.  ✅ Menyimpan gambar ke galeri menggunakan gallery_saver
-7.  ✅ Berbagi gambar langsung ke media sosial menggunakan share_plus
-8.  ✅ Filter foto sebelum menyimpan
-9.  ✅ Mode kamera depan & belakang
+6.  ✅ Mode kamera depan & belakang
+7.  ✅ Filter foto sebelum menyimpan
+
 
 
 📜 Penjelasan File & Kode
@@ -36,6 +35,9 @@ ss:
 🎯 Fitur yang Bisa Ditambahkan Berikutnya
 ☑️ Rekam video dengan kamera
 ☑️ UI lebih interaktif dengan animasi
+☑️ Berbagi gambar langsung ke media sosial menggunakan share_plus
+☑️ Menyimpan Gambar dengan Fitur GallerySaver (Masih Sulit Karena Alasan Keamanan antivirus Android)
+
 
 
 
