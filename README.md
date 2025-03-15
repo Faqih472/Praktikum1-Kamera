@@ -1,10 +1,12 @@
-📸 Kamera Mantap
+📸 Kamera (Update dengan Fitur filter carousel)
+
 Aplikasi Flutter sederhana yang menggunakan kamera untuk mengambil gambar dan menampilkannya. Proyek ini mendukung Android, iOS, dan Web.
 
 
 ss:
-![WhatsApp Image 2025-03-07 at 15 41 58 (1)](https://github.com/user-attachments/assets/d6bc995e-0a68-417f-8e86-bb982a3e4913)
-![WhatsApp Image 2025-03-07 at 15 41 58](https://github.com/user-attachments/assets/cfb504c3-6fa7-4cef-b0d5-b5e36090a570)
+![WhatsApp Image 2025-03-09 at 10 30 11](https://github.com/user-attachments/assets/451c81ec-c8ed-4587-90a8-0a74f8151c1a)
+
+![WhatsApp Image 2025-03-09 at 10 33 28](https://github.com/user-attachments/assets/cc6a78ac-4c41-4a6e-b1da-a65cac3d9167)
 
 
 
@@ -14,9 +16,9 @@ ss:
 3.  ✅ Mendukung Android, iOS, dan Web
 4.  ✅ Menampilkan loading saat kamera belum siap
 5.  ✅ Error handling jika kamera gagal diinisialisasi
-6.  ✅ Menyimpan gambar ke galeri menggunakan gallery_saver
-7.  ✅ Berbagi gambar langsung ke media sosial menggunakan share_plus
-8.  ✅ Mode kamera depan & belakang
+6.  ✅ Mode kamera depan & belakang
+7.  ✅ Filter foto sebelum menyimpan
+
 
 
 📜 Penjelasan File & Kode
@@ -32,8 +34,10 @@ ss:
 
 🎯 Fitur yang Bisa Ditambahkan Berikutnya
 ☑️ Rekam video dengan kamera
-☑️ Filter foto sebelum menyimpan
 ☑️ UI lebih interaktif dengan animasi
+☑️ Berbagi gambar langsung ke media sosial menggunakan share_plus
+☑️ Menyimpan Gambar dengan Fitur GallerySaver (Masih Sulit Karena Alasan Keamanan antivirus Android)
+
 
 
 
