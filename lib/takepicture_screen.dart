@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'displaypicture_screen.dart';
 import 'widgets/photo_filter_carousel.dart'; // Import layar filter foto
+import 'package:image/image.dart' as img;
 
 class TakePictureScreen extends StatefulWidget {
   const TakePictureScreen({super.key, required this.camera});
@@ -87,16 +88,25 @@ class TakePictureScreenState extends State<TakePictureScreen> {
             ),
             const SizedBox(width: 20), // Jarak antar tombol
             // Tombol untuk mengambil gambar
+            // Tombol untuk mengambil gambar
             FloatingActionButton(
               onPressed: () async {
                 try {
                   await _initializeControllerFuture;
                   final image = await _controller.takePicture();
+                  File imageFile = File(image.path);
 
-                  // Setelah mengambil gambar, masuk ke layar filter
+                  // Jika kamera depan, balik gambar horizontal
+                  if (_currentCamera.lensDirection == CameraLensDirection.front) {
+                    img.Image originalImage = img.decodeImage(await imageFile.readAsBytes())!;
+                    img.Image flippedImage = img.flipHorizontal(originalImage);
+                    await imageFile.writeAsBytes(img.encodeJpg(flippedImage));
+                  }
+
+                  // Pindah ke layar filter
                   await Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => PhotoFilterCarousel(imageFile: File(image.path)),
+                      builder: (context) => PhotoFilterCarousel(imageFile: imageFile),
                     ),
                   );
                 } catch (e) {
