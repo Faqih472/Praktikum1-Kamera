@@ -1,14 +1,11 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
-import 'displaypicture_screen.dart';
-import 'widgets/photo_filter_carousel.dart'; // Import layar filter foto
-import 'package:image/image.dart' as img;
 
 class TakePictureScreen extends StatefulWidget {
-  const TakePictureScreen({super.key, required this.camera});
-
   final CameraDescription camera;
+
+  const TakePictureScreen({super.key, required this.camera});
 
   @override
   TakePictureScreenState createState() => TakePictureScreenState();
@@ -26,11 +23,11 @@ class TakePictureScreenState extends State<TakePictureScreen> {
     _initializeCamera(_currentCamera);
   }
 
-  // Fungsi untuk menginisialisasi ulang kamera
   void _initializeCamera(CameraDescription camera) {
     _controller = CameraController(
       camera,
       ResolutionPreset.medium,
+      enableAudio: false,
     );
     _initializeControllerFuture = _controller.initialize();
   }
@@ -41,14 +38,11 @@ class TakePictureScreenState extends State<TakePictureScreen> {
     super.dispose();
   }
 
-  // Fungsi untuk beralih kamera
   void _toggleCamera(List<CameraDescription> cameras) {
     setState(() {
       _currentCamera = _currentCamera.lensDirection == CameraLensDirection.front
           ? cameras.firstWhere((camera) => camera.lensDirection == CameraLensDirection.back)
           : cameras.firstWhere((camera) => camera.lensDirection == CameraLensDirection.front);
-
-      // Menginisialisasi ulang controller kamera
       _initializeCamera(_currentCamera);
     });
   }
@@ -56,9 +50,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Take a Picture'),
-      ),
+      appBar: AppBar(title: const Text('Take a Picture')),
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
         builder: (context, snapshot) {
@@ -69,53 +61,64 @@ class TakePictureScreenState extends State<TakePictureScreen> {
           }
         },
       ),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(bottom: 20.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // Tombol untuk beralih kamera
-            FloatingActionButton(
-              onPressed: () async {
-                try {
-                  final cameras = await availableCameras();
-                  _toggleCamera(cameras);
-                } catch (e) {
-                  print('Error getting cameras: $e');
-                }
-              },
-              child: const Icon(Icons.switch_camera),
-            ),
-            const SizedBox(width: 20), // Jarak antar tombol
-            // Tombol untuk mengambil gambar
-            // Tombol untuk mengambil gambar
-            FloatingActionButton(
-              onPressed: () async {
-                try {
-                  await _initializeControllerFuture;
-                  final image = await _controller.takePicture();
-                  File imageFile = File(image.path);
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          FloatingActionButton(
+            onPressed: () async {
+              try {
+                final cameras = await availableCameras();
+                _toggleCamera(cameras);
+              } catch (e) {
+                print('Error getting cameras: $e');
+              }
+            },
+            child: const Icon(Icons.switch_camera),
+          ),
+          FloatingActionButton(
+            onPressed: () async {
+              try {
+                await _initializeControllerFuture;
+                final image = await _controller.takePicture();
+                File imageFile = File(image.path);
 
-                  // Jika kamera depan, balik gambar horizontal
-                  if (_currentCamera.lensDirection == CameraLensDirection.front) {
-                    img.Image originalImage = img.decodeImage(await imageFile.readAsBytes())!;
-                    img.Image flippedImage = img.flipHorizontal(originalImage);
-                    await imageFile.writeAsBytes(img.encodeJpg(flippedImage));
-                  }
-
-                  // Pindah ke layar filter
-                  await Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => PhotoFilterCarousel(imageFile: imageFile),
+                await Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => DisplayPictureScreen(
+                      imageFile: imageFile,
+                      isFrontCamera: _currentCamera.lensDirection == CameraLensDirection.front,
                     ),
-                  );
-                } catch (e) {
-                  print(e);
-                }
-              },
-              child: const Icon(Icons.camera_alt),
-            ),
-          ],
+                  ),
+                );
+              } catch (e) {
+                print('Error capturing image: $e');
+              }
+            },
+            child: const Icon(Icons.camera_alt),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class DisplayPictureScreen extends StatelessWidget {
+  final File imageFile;
+  final bool isFrontCamera;
+
+  const DisplayPictureScreen({super.key, required this.imageFile, required this.isFrontCamera});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Captured Image')),
+      body: Center(
+        child: Transform(
+          alignment: Alignment.center,
+          transform: isFrontCamera
+              ? (Matrix4.identity()..scale(-1.0, 1.0, 1.0)) // Flip horizontal jika kamera depan
+              : Matrix4.identity(), // Tidak ada perubahan untuk kamera belakang
+          child: Image.file(imageFile),
         ),
       ),
     );
